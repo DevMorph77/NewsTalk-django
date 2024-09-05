@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Newspaper App</h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title text-center">Log In</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                        <div class="text-center">
+                            <button class="btn btn-success" type="submit">Log In</button>
+                            <div>
+                                <a href="{% url 'password_reset' %}">Forgotten password?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
